@@ -17,6 +17,9 @@ pipeline {
             }
         }
         stage('Code Quality Check via SonarQube') {
+            environment {
+                SONARQUBE_TOKEN = credentials('sq')
+            }
             steps {
                 script {
                     def scannerHome = tool 'SonarQube';
@@ -24,7 +27,7 @@ pipeline {
                     sh "echo SonarQube Scanner Path: ${scannerHome}"
 
                     withSonarQubeEnv('SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=app -Dsonar.sources=. -Dsonar.host.url=http://192.168.0.210:9000 -Dsonar.token=sqp_3fb79bead259471852eab972a856a26e7f3a4ac8"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=app -Dsonar.sources=. -Dsonar.host.url=http://192.168.0.210:9000 -Dsonar.token=${SONARQUBE_TOKEN}"
                     }
                 }
             }
