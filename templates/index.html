@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Search App</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Search Form</h1>
+      <form method="post">
+        <div class="form-group">
+          <label for="search">Search Term</label>
+          <input type="text" id="search" name="search" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+      {% if message %}
+      <p style="color: red;">{{ message }}</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
