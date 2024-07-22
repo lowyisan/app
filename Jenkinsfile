@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from the Git repository
-                git url: 'http://git-server:3000/repository.git', branch: 'main'
+                git url: 'https://github.com/lowyisan/app.git', branch: 'main'
             }
         }
         stage('OWASP DependencyCheck') {
